@@ -25,7 +25,7 @@ public:
     }
 };
 
-arma::vec jacobi(arma::mat A, arma::vec b, int max_iter=10000, double eps=1e-5){
+arma::vec jacobi(arma::mat A, arma::vec b, int max_iter=1000, double eps=1e-5){
     // A must be diagonally dominant for the algorithm to converge.
     int n = size(b)[0];
     
@@ -42,7 +42,7 @@ arma::vec jacobi(arma::mat A, arma::vec b, int max_iter=10000, double eps=1e-5){
             nonDiagElem -= diag_i;
             
             if (diag_i < nonDiagElem) {
-                throw NotDiagonallyDominantException();        
+                throw NotDiagonallyDominantException();      
             }
         } 
     } catch(NotDiagonallyDominantException &e){
